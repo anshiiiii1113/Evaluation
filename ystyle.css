@@ -12,10 +12,10 @@ body {
   background: #080808;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Navbar */
-
 .navbar {
   height: 75px;
   padding: 0 7%;
@@ -25,6 +25,7 @@ body {
   background: #080808;
   position: relative;
   z-index: 10;
+  gap: 20px;
 }
 
 .logo {
@@ -48,24 +49,70 @@ footer span {
   color: white;
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.2s;
 }
 
 .nav-links a:hover {
   color: #e5a23c;
 }
 
-.search-btn {
-  padding: 11px 23px;
+/* Search Bar */
+.search-bar-wrap {
+  display: flex;
+  align-items: center;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 3px 4px 3px 12px;
+  transition: 0.3s;
+}
+
+.search-bar-wrap:focus-within {
+  border-color: #e5a23c;
+  box-shadow: 0 0 10px rgba(229, 162, 60, 0.3);
+}
+
+.search-icon {
+  color: #888;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.search-bar-wrap input {
+  background: transparent;
   border: none;
-  border-radius: 5px;
+  outline: none;
+  color: white;
+  font-size: 13px;
+  width: 170px;
+  transition: width 0.3s;
+}
+
+.search-bar-wrap input:focus {
+  width: 220px;
+}
+
+.search-bar-wrap input::placeholder {
+  color: #777;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
   background: #e5a23c;
   color: #111;
   font-weight: bold;
   cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.search-btn:hover {
+  background: #ffd07d;
 }
 
 /* Gold Bar */
-
 .gold-bar {
   height: 62px;
   padding: 0 7%;
@@ -74,6 +121,8 @@ footer span {
   justify-content: space-between;
   background: linear-gradient(90deg, #b87920, #e7a33d, #b87920);
   box-shadow: 0 3px 15px rgba(229, 162, 60, 0.25);
+  position: relative;
+  z-index: 5;
 }
 
 .bar-options {
@@ -86,6 +135,7 @@ footer span {
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
+  transition: 0.2s;
 }
 
 .signin-btn {
@@ -96,6 +146,7 @@ footer span {
   color: #17100a;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .signin-btn:hover {
@@ -103,8 +154,102 @@ footer span {
   color: #e7a33d;
 }
 
-/* Hero */
+/* ===================================================
+   Live Ticker Bar
+   =================================================== */
+.ticker-bar {
+  background: #0d0d10;
+  border-bottom: 1px solid #1f1f26;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 7%;
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+}
 
+.ticker-badge {
+  background: linear-gradient(135deg, #ffd07d, #e5a23c);
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(229, 162, 60, 0.4);
+  letter-spacing: 0.5px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #e63946;
+  border-radius: 50%;
+  animation: pulseDot 1.4s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.8); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 1; }
+}
+
+.ticker-track-wrap {
+  flex: 1;
+  overflow: hidden;
+  margin-left: 18px;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 30px;
+  animation: tickerScroll 32s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  font-size: 13px;
+  color: #bbb;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ticker-item:hover {
+  color: #fff;
+}
+
+.ticker-tag {
+  color: #e5a23c;
+  font-weight: bold;
+}
+
+.ticker-item .sep {
+  color: #b87920;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+/* Hero */
 .hero {
   min-height: 650px;
   padding: 80px 8%;
@@ -112,7 +257,6 @@ footer span {
   align-items: center;
   position: relative;
   overflow: hidden;
-
   background:
     linear-gradient(
       90deg,
@@ -120,8 +264,7 @@ footer span {
       rgba(0, 0, 0, 0.55),
       rgba(0, 0, 0, 0.15)
     ),
-    url("images/spiderman-bg.jpg");
-
+    url("https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1600&auto=format&fit=crop&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -138,6 +281,7 @@ footer span {
   letter-spacing: 4px;
   font-size: 13px;
   margin-bottom: 22px;
+  font-weight: bold;
 }
 
 .hero h2 {
@@ -166,6 +310,12 @@ footer span {
   color: #111;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.explore-btn:hover {
+  background: #ffd07d;
+  transform: translateY(-2px);
 }
 
 .watermark {
@@ -178,6 +328,8 @@ footer span {
   text-align: right;
   color: rgba(255, 255, 255, 0.13);
   transform: rotate(-8deg);
+  pointer-events: none;
+  user-select: none;
 }
 
 .watermark span {
@@ -185,7 +337,6 @@ footer span {
 }
 
 /* Sections */
-
 .section {
   padding: 70px 8%;
   background: #0d0d0d;
@@ -205,7 +356,6 @@ footer span {
 }
 
 /* Movie Cards */
-
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -217,11 +367,13 @@ footer span {
   border-radius: 8px;
   overflow: hidden;
   transition: 0.3s;
+  border: 1px solid transparent;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(229, 162, 60, 0.15);
+  box-shadow: 0 8px 25px rgba(229, 162, 60, 0.25);
+  border-color: rgba(229, 162, 60, 0.4);
 }
 
 .poster {
@@ -259,7 +411,6 @@ footer span {
 }
 
 /* Series */
-
 .series-section {
   background: #101010;
 }
@@ -287,7 +438,6 @@ footer span {
 }
 
 /* Footer */
-
 footer {
   text-align: center;
   padding: 45px;
@@ -308,12 +458,12 @@ footer small {
 }
 
 /* Sign In Popup */
-
 .popup-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
   justify-content: center;
   align-items: center;
   z-index: 100;
@@ -376,6 +526,11 @@ footer small {
   color: #111;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.popup-signin:hover {
+  background: #ffd07d;
 }
 
 .signup-text {
@@ -386,25 +541,60 @@ footer small {
 
 .signup-text span {
   color: #e5a23c;
+  cursor: pointer;
+}
+
+/* Floating Toast Notification */
+#creativeToast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+#creativeToast.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast-card {
+  background: #18181c;
+  border: 1px solid #e5a23c;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(229, 162, 60, 0.35);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 13.5px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-bolt {
+  color: #e5a23c;
 }
 
 /* Responsive */
-
 @media (max-width: 900px) {
   .nav-links {
     gap: 12px;
   }
-
   .bar-options {
     gap: 15px;
   }
-
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .hero h2 {
     font-size: 45px;
+  }
+  .search-bar-wrap input {
+    width: 120px;
   }
 }
 
@@ -412,44 +602,34 @@ footer small {
   .nav-links {
     display: none;
   }
-
-  .navbar {
-    padding: 0 20px;
+  .navbar, .gold-bar, .ticker-bar {
+    padding: 0 16px;
   }
-
-  .gold-bar {
-    padding: 0 20px;
-  }
-
   .bar-options {
     gap: 10px;
   }
-
   .gold-bar a {
     font-size: 11px;
   }
-
   .hero {
-    padding: 60px 25px;
+    padding: 60px 20px;
   }
-
   .hero h2 {
     font-size: 38px;
   }
-
   .cards {
     grid-template-columns: 1fr;
   }
-
   .section {
-    padding: 55px 25px;
+    padding: 55px 20px;
   }
-
   .series-box {
     padding: 30px;
   }
-
   .signin-popup {
     width: 90%;
+  }
+  .search-bar-wrap input {
+    width: 100px;
   }
 }

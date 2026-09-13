@@ -1,325 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IMDb Clone — Movies, Top 10, Hindi & English Cinema</title>
-  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamScout — Discover Your Next Adventure</title>
+  <!-- Google Font & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="ystyle.css">
 </head>
 <body>
 
-  <!-- Ambient Gold Glow Backdrops -->
-  <div class="ambient-glow top-left"></div>
-  <div class="ambient-glow center-right"></div>
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <h1 class="logo">Stream<span>Scout</span></h1>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="nav-left">
-        <a href="#" class="logo-gold" title="IMDb Home">
-          <span class="logo-box">IMDb</span>
-          <span class="logo-subtitle">GOLD</span>
-        </a>
-        <button class="nav-btn menu-btn" id="menuBtn">
-          <i class="fa-solid fa-bars-staggered"></i>
-          <span>Explore</span>
-        </button>
-      </div>
-
-      <!-- Live Search Bar -->
-      <div class="search-container">
-        <div class="search-category-wrap">
-          <select class="search-category" id="searchCategory">
-            <option value="all">All Titles</option>
-            <option value="hindi">Hindi</option>
-            <option value="english">English</option>
-          </select>
-          <i class="fa-solid fa-angle-down select-icon"></i>
-        </div>
-        <div class="search-input-wrap">
-          <i class="fa-solid fa-magnifying-glass search-leading-icon"></i>
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Search Hindi, English movies, cast, directors..." 
-            autocomplete="off"
-          />
-          <button class="clear-search-btn" id="clearSearchBtn" title="Clear">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="nav-right">
-        <div class="lang-switch-pills">
-          <button class="lang-btn active" data-filter="all">All</button>
-          <button class="lang-btn" data-filter="hindi">Hindi</button>
-          <button class="lang-btn" data-filter="english">English</button>
-        </div>
-        <button class="nav-btn watchlist-btn" id="openWatchlistBtn">
-          <i class="fa-solid fa-bookmark"></i>
-          <span>Watchlist</span>
-          <span class="watchlist-count-badge" id="navWatchlistCount">0</span>
-        </button>
-        <button class="signin-gold-btn">Sign In</button>
-      </div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#series">Web Series</a>
+      <a href="#trending">Trending</a>
+      <a href="#about">About</a>
     </div>
-  </header>
 
-  <!-- LIVE ENTERTAINMENT & BOX OFFICE TICKER -->
-  <div class="ticker-wrapper">
-    <div class="ticker-container">
-      <div class="ticker-badge">
-        <span class="pulse-indicator"></span>
-        <i class="fa-solid fa-bolt"></i>
-        <span>IMDb LIVE</span>
+    <div class="nav-actions">
+      <div class="nav-search-wrap">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" placeholder="Search titles, actors..." class="nav-search-input">
       </div>
-      <div class="ticker-track-wrap">
-        <div class="ticker-track" id="tickerTrack">
-          <!-- Populated dynamically with breaking news & box office -->
-        </div>
+      <button class="search-btn">Search</button>
+    </div>
+  </nav>
+
+  <!-- Gold Menu Bar -->
+  <div class="gold-bar">
+    <div class="bar-options">
+      <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#movies"><i class="fa-solid fa-film"></i> Movies</a>
+      <a href="#series"><i class="fa-solid fa-tv"></i> Web Series</a>
+      <a href="#trending"><i class="fa-solid fa-fire"></i> Trending</a>
+      <a href="#about"><i class="fa-solid fa-circle-info"></i> About Us</a>
+    </div>
+
+    <!-- Creative Glowing Sign In Button -->
+    <button class="signin-btn" onclick="openPopup('signin')">
+      <span class="btn-sparkle"><i class="fa-solid fa-sparkles"></i></span>
+      <i class="fa-solid fa-user-astronaut"></i>
+      <span>Sign In</span>
+      <span class="btn-glow-ring"></span>
+    </button>
+  </div>
+
+  <!-- LIVE ENTERTAINMENT & STREAMING TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-badge">
+      <span class="live-dot"></span>
+      <i class="fa-solid fa-bolt-lightning"></i>
+      <span>LIVE SCOUT</span>
+    </div>
+    <div class="ticker-viewport">
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-item"><span class="ticker-tag">🔥 TRENDING</span> Spider-Man: Beyond the Spider-Verse teaser officially announced! <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">⭐ BOX OFFICE</span> Into the Multiverse claims #1 on global streaming charts this week <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🎬 NEW SEASON</span> Night City Season 2 drops all 8 episodes this Friday in 4K UHD <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🍿 RECORD</span> Dark Horizon reaches 50 million streams within 72 hours <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🏆 AWARDS</span> Beyond Space nominated for 6 International Visual Effects trophies <span class="sep">•</span></div>
+        <!-- Duplicate for continuous infinite scroll -->
+        <div class="ticker-item"><span class="ticker-tag">🔥 TRENDING</span> Spider-Man: Beyond the Spider-Verse teaser officially announced! <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">⭐ BOX OFFICE</span> Into the Multiverse claims #1 on global streaming charts this week <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🎬 NEW SEASON</span> Night City Season 2 drops all 8 episodes this Friday in 4K UHD <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🍿 RECORD</span> Dark Horizon reaches 50 million streams within 72 hours <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🏆 AWARDS</span> Beyond Space nominated for 6 International Visual Effects trophies <span class="sep">•</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Search Results Overlay (Active when user types in search) -->
-  <section class="search-results-section" id="searchResultsSection" style="display: none;">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="title-with-bar">
-          <span class="gold-bar"></span>
-          <h2>Search Results <span id="searchKeywordLabel" class="search-keyword"></span></h2>
-        </div>
-        <button class="close-search-results" id="closeSearchSectionBtn">
-          <i class="fa-solid fa-xmark"></i> Close Search
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="tag"><i class="fa-solid fa-circle-play"></i> WELCOME TO STREAMSCOUT</p>
+
+      <h2>
+        Discover Your<br>
+        <span>Next Adventure</span>
+      </h2>
+
+      <p class="description">
+        Explore amazing movies and web series from every universe.
+        Find your next favourite story in one place.
+      </p>
+
+      <div class="hero-btns">
+        <button class="explore-btn">
+          <i class="fa-solid fa-play"></i> Explore Now
+        </button>
+        <button class="watchlist-quick-btn" onclick="openPopup('signin')">
+          <i class="fa-solid fa-bookmark"></i> My Watchlist
         </button>
       </div>
-      <div class="movies-grid" id="searchGrid"></div>
-      <div class="empty-state" id="noSearchResults" style="display: none;">
-        <i class="fa-solid fa-film"></i>
-        <h3>No matching movies found</h3>
-        <p>Try searching by actor, director, or different keywords like "Nolan", "Khan", or "Action".</p>
+    </div>
+
+    <div class="watermark">
+      SPIDER<br>
+      <span>VERSE</span>
+    </div>
+  </section>
+
+  <!-- Trending Movies -->
+  <section class="section" id="movies">
+    <div class="heading">
+      <h2>Trending <span>Movies</span></h2>
+      <p>Popular movies you should watch right now</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="poster poster-one">
+          <span class="card-badge">TOP 1</span>
+          <span class="poster-num">01</span>
+        </div>
+        <div class="card-body">
+          <h3>Into the Multiverse</h3>
+          <p><i class="fa-solid fa-star"></i> 8.9 • Action • Adventure</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-two">
+          <span class="card-badge">TOP 2</span>
+          <span class="poster-num">02</span>
+        </div>
+        <div class="card-body">
+          <h3>Night City</h3>
+          <p><i class="fa-solid fa-star"></i> 8.7 • Thriller • Mystery</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-three">
+          <span class="card-badge">TOP 3</span>
+          <span class="poster-num">03</span>
+        </div>
+        <div class="card-body">
+          <h3>Beyond Space</h3>
+          <p><i class="fa-solid fa-star"></i> 8.6 • Sci-Fi • Drama</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-four">
+          <span class="card-badge">TOP 4</span>
+          <span class="poster-num">04</span>
+        </div>
+        <div class="card-body">
+          <h3>Dark Horizon</h3>
+          <p><i class="fa-solid fa-star"></i> 8.5 • Action • Fantasy</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Showcase Container -->
-  <main class="main-container" id="mainShowcase">
-    
-    <!-- Hero Spotlight with Gold Accent Glassmorphism -->
-    <section class="hero-spotlight">
-      <div class="hero-backdrop" id="heroBackdrop"></div>
-      <div class="hero-gradient-overlay"></div>
-      
-      <div class="hero-content">
-        <div class="hero-badges">
-          <span class="badge gold-badge"><i class="fa-solid fa-crown"></i> SPOTLIGHT OF THE WEEK</span>
-          <span class="badge lang-badge" id="heroLangBadge">ENGLISH</span>
-          <span class="badge hd-badge">4K ULTRA HD</span>
-        </div>
-        <h1 class="hero-title" id="heroTitle">Oppenheimer</h1>
-        
-        <div class="hero-meta">
-          <span class="hero-rating">
-            <i class="fa-solid fa-star"></i>
-            <strong id="heroRating">8.9</strong><span class="total-rating">/10</span>
-          </span>
-          <span class="dot">•</span>
-          <span id="heroYear">2023</span>
-          <span class="dot">•</span>
-          <span id="heroDuration">3h 00m</span>
-          <span class="dot">•</span>
-          <span id="heroGenre" class="hero-genre-text">Biography, Drama, History</span>
-        </div>
-
-        <p class="hero-desc" id="heroDesc">
-          The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.
-        </p>
-
-        <div class="hero-actions">
-          <button class="btn btn-gold" id="heroTrailerBtn">
-            <i class="fa-solid fa-play"></i> Watch Trailer
-          </button>
-          <button class="btn btn-glass" id="heroDetailsBtn">
-            <i class="fa-solid fa-circle-info"></i> More Details
-          </button>
-          <button class="btn btn-icon-only" id="heroWatchlistBtn" title="Add to Watchlist">
-            <i class="fa-solid fa-plus"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Hero Up Next Mini-Previews -->
-      <div class="hero-mini-selector" id="heroMiniSelector">
-        <span class="selector-title"><i class="fa-solid fa-fire"></i> Up Next</span>
-        <div class="mini-cards-wrapper" id="miniCardsWrapper"></div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: Top 10 on IMDb (Numbered Luxury Cards) -->
-    <section class="movie-shelf-section top10-section">
-      <div class="shelf-header">
-        <div class="title-with-bar">
-          <span class="gold-bar"></span>
-          <div>
-            <span class="shelf-sub">WHAT USERS ARE WATCHING</span>
-            <h2>Top 10 on IMDb This Week</h2>
-          </div>
-        </div>
-        <div class="shelf-controls">
-          <button class="scroll-arrow prev" data-target="top10Shelf" title="Scroll Left">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <button class="scroll-arrow next" data-target="top10Shelf" title="Scroll Right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="shelf-scroll-row top10-row" id="top10Shelf">
-        <!-- Filled dynamically by JavaScript -->
-      </div>
-    </section>
-
-    <!-- SECTION 2: Hindi Cinema & Indian Blockbusters -->
-    <section class="movie-shelf-section" id="hindiSection">
-      <div class="shelf-header">
-        <div class="title-with-bar">
-          <span class="gold-bar"></span>
-          <div>
-            <span class="shelf-sub">BOLLYWOOD & INDIAN CINEMA</span>
-            <h2>Top Rated Hindi & Indian Blockbusters</h2>
-          </div>
-        </div>
-        <div class="shelf-controls">
-          <button class="scroll-arrow prev" data-target="hindiShelf" title="Scroll Left">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <button class="scroll-arrow next" data-target="hindiShelf" title="Scroll Right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="shelf-scroll-row standard-row" id="hindiShelf">
-        <!-- Filled dynamically by JavaScript -->
-      </div>
-    </section>
-
-    <!-- SECTION 3: English Blockbusters & Global Masterpieces -->
-    <section class="movie-shelf-section" id="englishSection">
-      <div class="shelf-header">
-        <div class="title-with-bar">
-          <span class="gold-bar"></span>
-          <div>
-            <span class="shelf-sub">HOLLYWOOD & GLOBAL MASTERPIECES</span>
-            <h2>Top Rated English & Hollywood Hits</h2>
-          </div>
-        </div>
-        <div class="shelf-controls">
-          <button class="scroll-arrow prev" data-target="englishShelf" title="Scroll Left">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <button class="scroll-arrow next" data-target="englishShelf" title="Scroll Right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="shelf-scroll-row standard-row" id="englishShelf">
-        <!-- Filled dynamically by JavaScript -->
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Watchlist Drawer (Slide-In Panel) -->
-  <div class="drawer-overlay" id="watchlistDrawer">
-    <div class="drawer-panel">
-      <div class="drawer-header">
-        <div class="title-with-bar">
-          <span class="gold-bar"></span>
-          <h3>Your Watchlist</h3>
-        </div>
-        <button class="drawer-close" id="closeWatchlistBtn">&times;</button>
-      </div>
-      <div class="drawer-content" id="watchlistContent">
-        <!-- Populated dynamically -->
-      </div>
+  <!-- Web Series -->
+  <section class="section series-section" id="series">
+    <div class="heading">
+      <h2>Popular <span>Web Series</span></h2>
+      <p>Stories worth binge-watching</p>
     </div>
-  </div>
 
-  <!-- Movie Details Modal -->
-  <div class="modal-overlay" id="movieModal">
-    <div class="modal-box">
-      <button class="close-modal" id="closeModal">&times;</button>
-      <div class="modal-body" id="modalBody">
-        <!-- Populated dynamically -->
-      </div>
-    </div>
-  </div>
+    <div class="series-box">
+      <div class="series-badge"><i class="fa-solid fa-fire"></i> BINGE ESSENTIALS</div>
+      <h2>Your next binge starts here.</h2>
+      <p>
+        Find exciting web series, unforgettable characters,
+        and stories that keep you hooked from the pilot to the finale.
+      </p>
 
-  <!-- YouTube Trailer Video Modal -->
-  <div class="modal-overlay" id="trailerModal">
-    <div class="modal-box trailer-box">
-      <button class="close-modal" id="closeTrailerModal">&times;</button>
-      <div class="trailer-wrapper" id="trailerWrapper">
-        <!-- YouTube iframe injected on click -->
-      </div>
+      <button class="explore-btn">
+        <i class="fa-solid fa-tv"></i> Explore Series
+      </button>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div class="logo-gold">
-          <span class="logo-box">IMDb</span>
-          <span class="logo-subtitle">GOLD</span>
-        </div>
-        <p>The world's most trusted authority on movie ratings, Hindi & English cinema, and entertainment trivia.</p>
-        <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-      </div>
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="#">Top 10 Movies</a>
-          <a href="#">Hindi Movies</a>
-          <a href="#">English Blockbusters</a>
-          <a href="#">IMDb Top 250</a>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <a href="#">Watchlist</a>
-          <a href="#">User Ratings</a>
-          <a href="#">Critic Reviews</a>
-          <a href="#">Awards & Events</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal & Business</h4>
-          <a href="#">IMDbPro</a>
-          <a href="#">Box Office Mojo</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-        </div>
-      </div>
+  <footer id="about">
+    <h2>Stream<span>Scout</span></h2>
+    <p>Discover. Explore. Watch.</p>
+    <div class="footer-socials">
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-discord"></i></a>
     </div>
-    <div class="footer-bottom">
-      <p>© 1990-2026 by IMDb.com, Inc. Custom Gold & Black Theme Edition.</p>
-    </div>
+    <small>© 2026 StreamScout. All rights reserved.</small>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- CREATIVE INTERACTIVE SIGN IN POPUP -->
+  <div class="popup-overlay" id="signinPopup">
+    <div class="signin-popup">
+      <!-- Glow ambient backdrop inside modal -->
+      <div class="popup-ambient-glow"></div>
+
+      <button class="close-btn" onclick="closePopup()" title="Close">&times;</button>
+
+      <!-- Brand Logo Avatar -->
+      <div class="popup-avatar">
+        <i class="fa-solid fa-film"></i>
+      </div>
+
+      <!-- Tab Switcher (Sign In vs Sign Up) -->
+      <div class="auth-tabs">
+        <button class="tab-btn active" id="tabSignIn" onclick="switchAuthTab('signin')">Sign In</button>
+        <button class="tab-btn" id="tabSignUp" onclick="switchAuthTab('signup')">Sign Up</button>
+      </div>
+
+      <div class="popup-heading">
+        <h2 id="authHeading">Welcome Back!</h2>
+        <p id="authSubheading">Access your personalized watchlist & recommendations</p>
+      </div>
+
+      <!-- Social Quick Logins -->
+      <div class="social-login-row">
+        <button class="social-btn google-btn" type="button" onclick="socialLogin('Google')">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <button class="social-btn apple-btn" type="button" onclick="socialLogin('Apple')">
+          <i class="fa-brands fa-apple"></i> Apple
+        </button>
+      </div>
+
+      <div class="divider-text">
+        <span>or with email</span>
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="loginUser(event)" id="authForm">
+        <!-- Name field (shown on Sign Up) -->
+        <div class="input-group" id="nameGroup" style="display: none;">
+          <i class="fa-solid fa-user input-icon"></i>
+          <input type="text" id="userName" placeholder="Your Full Name">
+        </div>
+
+        <!-- Email field -->
+        <div class="input-group">
+          <i class="fa-solid fa-envelope input-icon"></i>
+          <input type="email" id="userEmail" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Password field with Show/Hide toggle -->
+        <div class="input-group">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input type="password" id="userPassword" placeholder="Enter your password" required>
+          <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+
+        <!-- Options row -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-link" onclick="forgotPassword(event)">Forgot?</a>
+        </div>
+
+        <!-- Submit Button with Gold Shimmer -->
+        <button type="submit" class="popup-signin" id="submitAuthBtn">
+          <span>Sign In to Scout</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <p class="signup-text" id="toggleAuthText">
+        Don't have an account? <span onclick="switchAuthTab('signup')">Sign Up Free</span>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let currentAuthMode = 'signin';
+
+    function openPopup(mode = 'signin') {
+      switchAuthTab(mode);
+      const popup = document.getElementById("signinPopup");
+      popup.style.display = "flex";
+      // Trigger animation
+      setTimeout(() => {
+        popup.classList.add("show");
+      }, 10);
+    }
+
+    function closePopup() {
+      const popup = document.getElementById("signinPopup");
+      popup.classList.remove("show");
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 200);
+    }
+
+    function switchAuthTab(mode) {
+      currentAuthMode = mode;
+      const tabSignIn = document.getElementById("tabSignIn");
+      const tabSignUp = document.getElementById("tabSignUp");
+      const nameGroup = document.getElementById("nameGroup");
+      const authHeading = document.getElementById("authHeading");
+      const authSubheading = document.getElementById("authSubheading");
+      const submitBtn = document.getElementById("submitAuthBtn");
+      const toggleText = document.getElementById("toggleAuthText");
+
+      if (mode === 'signup') {
+        tabSignIn.classList.remove("active");
+        tabSignUp.classList.add("active");
+        nameGroup.style.display = "flex";
+        authHeading.textContent = "Join StreamScout";
+        authSubheading.textContent = "Start discovering endless cinema and web series";
+        submitBtn.innerHTML = `<span>Create Account</span> <i class="fa-solid fa-sparkles"></i>`;
+        toggleText.innerHTML = `Already have an account? <span onclick="switchAuthTab('signin')">Sign In</span>`;
+      } else {
+        tabSignUp.classList.remove("active");
+        tabSignIn.classList.add("active");
+        nameGroup.style.display = "none";
+        authHeading.textContent = "Welcome Back!";
+        authSubheading.textContent = "Access your personalized watchlist & recommendations";
+        submitBtn.innerHTML = `<span>Sign In to Scout</span> <i class="fa-solid fa-arrow-right"></i>`;
+        toggleText.innerHTML = `Don't have an account? <span onclick="switchAuthTab('signup')">Sign Up Free</span>`;
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById("userPassword");
+      const eyeIcon = document.getElementById("eyeIcon");
+      if (pwdInput.type === "password") {
+        pwdInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      } else {
+        pwdInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      const email = document.getElementById("userEmail").value;
+      const btn = document.getElementById("submitAuthBtn");
+      
+      // Creative Loading Feedback
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> Success! Welcome!`;
+        btn.style.background = "#2ecc71";
+        btn.style.color = "#fff";
+
+        setTimeout(() => {
+          alert((currentAuthMode === 'signup' ? "Account created successfully!" : "Signed in successfully as ") + email);
+          btn.disabled = false;
+          btn.style.background = "";
+          btn.style.color = "";
+          switchAuthTab(currentAuthMode);
+          closePopup();
+        }, 600);
+      }, 900);
+    }
+
+    function socialLogin(provider) {
+      alert(`Connecting to ${provider} authentication... Welcome to StreamScout!`);
+      closePopup();
+    }
+
+    function forgotPassword(e) {
+      e.preventDefault();
+      const email = prompt("Please enter your email to receive a password reset link:");
+      if (email) {
+        alert("Password reset instructions sent to " + email);
+      }
+    }
+
+    window.onclick = function(event) {
+      const popup = document.getElementById("signinPopup");
+      if (event.target === popup) {
+        closePopup();
+      }
+    };
+
+    // Close on Escape key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closePopup();
+      }
+    });
+  </script>
+
 </body>
 </html>

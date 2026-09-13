@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StreamScout</title>
+  <!-- Font Awesome for Search & Ticker Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="ystyle.css">
 </head>
 <body>
 
-  <!-- Top Navbar -->
+  <!-- Top Navbar with Search Bar -->
   <nav class="navbar">
     <h1 class="logo">Stream<span>Scout</span></h1>
 
@@ -20,7 +22,12 @@
       <a href="#about">About</a>
     </div>
 
-    <button class="search-btn">Search</button>
+    <!-- Integrated Search Bar -->
+    <div class="search-bar-wrap">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Search movies, series, actors..." />
+      <button class="search-btn" id="searchBtn" onclick="handleSearch()">Search</button>
+    </div>
   </nav>
 
   <!-- Gold Menu Bar -->
@@ -34,6 +41,30 @@
     </div>
 
     <button class="signin-btn" onclick="openPopup()">Sign In</button>
+  </div>
+
+  <!-- LIVE STREAMING & BOX OFFICE TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-badge">
+      <span class="live-dot"></span>
+      <i class="fa-solid fa-bolt"></i>
+      <span>LIVE SCOUT</span>
+    </div>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-tag">🔥 TRENDING</span> Spider-Man: Beyond the Spider-Verse teaser officially announced! <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">⭐ BOX OFFICE</span> Into the Multiverse claims #1 on global streaming charts <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🎬 NEW RELEASE</span> Night City Season 2 drops all episodes this Friday in 4K <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🍿 RECORD</span> Dark Horizon reaches 50 million streams within 72 hours <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🏆 AWARDS</span> Beyond Space nominated for 6 International VFX trophies <span class="sep">•</span></div>
+        <!-- Duplicated for continuous smooth marquee loop -->
+        <div class="ticker-item"><span class="ticker-tag">🔥 TRENDING</span> Spider-Man: Beyond the Spider-Verse teaser officially announced! <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">⭐ BOX OFFICE</span> Into the Multiverse claims #1 on global streaming charts <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🎬 NEW RELEASE</span> Night City Season 2 drops all episodes this Friday in 4K <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🍿 RECORD</span> Dark Horizon reaches 50 million streams within 72 hours <span class="sep">•</span></div>
+        <div class="ticker-item"><span class="ticker-tag">🏆 AWARDS</span> Beyond Space nominated for 6 International VFX trophies <span class="sep">•</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- Hero Section -->
@@ -67,26 +98,26 @@
       <p>Popular movies you should watch</p>
     </div>
 
-    <div class="cards">
-      <div class="card">
+    <div class="cards" id="movieCards">
+      <div class="card" data-title="Into the Multiverse">
         <div class="poster poster-one">01</div>
         <h3>Into the Multiverse</h3>
         <p>Action • Adventure</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Night City">
         <div class="poster poster-two">02</div>
         <h3>Night City</h3>
         <p>Thriller • Mystery</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Beyond Space">
         <div class="poster poster-three">03</div>
         <h3>Beyond Space</h3>
         <p>Sci-Fi • Drama</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Dark Horizon">
         <div class="poster poster-four">04</div>
         <h3>Dark Horizon</h3>
         <p>Action • Fantasy</p>
@@ -128,10 +159,10 @@
       <p>Sign in to continue to StreamScout</p>
 
       <form onsubmit="loginUser(event)">
-        <input type="email" placeholder="Enter your email" required>
-        <input type="password" placeholder="Enter your password" required>
+        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
 
-        <button type="submit" class="popup-signin">Sign In</button>
+        <button type="submit" class="popup-signin" id="loginSubmitBtn">Sign In</button>
       </form>
 
       <p class="signup-text">
@@ -140,29 +171,7 @@
     </div>
   </div>
 
-  <script>
-    function openPopup() {
-      document.getElementById("signinPopup").style.display = "flex";
-    }
-
-    function closePopup() {
-      document.getElementById("signinPopup").style.display = "none";
-    }
-
-    function loginUser(event) {
-      event.preventDefault();
-      alert("Sign in successful!");
-      closePopup();
-    }
-
-    window.onclick = function(event) {
-      const popup = document.getElementById("signinPopup");
-
-      if (event.target === popup) {
-        closePopup();
-      }
-    };
-  </script>
+  <script src="yscript.js"></script>
 
 </body>
 </html>
