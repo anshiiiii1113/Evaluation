@@ -249,9 +249,9 @@ footer span {
   margin-left: 15px;
 }
 
-/* Hero */
+/* Hero Section with Spider-Man Background */
 .hero {
-  min-height: 650px;
+  min-height: 660px;
   padding: 80px 8%;
   display: flex;
   align-items: center;
@@ -260,13 +260,14 @@ footer span {
   background:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.92),
-      rgba(0, 0, 0, 0.55),
-      rgba(0, 0, 0, 0.15)
+      rgba(8, 8, 8, 0.96) 0%,
+      rgba(8, 8, 8, 0.82) 42%,
+      rgba(8, 8, 8, 0.3) 75%,
+      rgba(8, 8, 8, 0.6) 100%
     ),
-    url("https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1600&auto=format&fit=crop&q=80");
+    url("images/spiderman-bg.png");
   background-size: cover;
-  background-position: center;
+  background-position: 65% 25%;
   background-repeat: no-repeat;
 }
 
@@ -613,6 +614,7 @@ footer small {
   }
   .hero {
     padding: 60px 20px;
+    background-position: 65% center;
   }
   .hero h2 {
     font-size: 38px;
