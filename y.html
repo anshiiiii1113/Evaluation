@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamScout</title>
+  <link rel="stylesheet" href="ystyle.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <h1 class="logo">Stream<span>Scout</span></h1>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#series">Web Series</a>
+      <a href="#trending">Trending</a>
+      <a href="#about">About</a>
+    </div>
+
+    <button class="search-btn">Search</button>
+  </nav>
+
+  <!-- Gold Menu Bar -->
+  <div class="gold-bar">
+    <div class="bar-options">
+      <a href="#">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#series">Web Series</a>
+      <a href="#trending">Trending</a>
+      <a href="#about">About Us</a>
+    </div>
+
+    <button class="signin-btn" onclick="openPopup()">Sign In</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="tag">WELCOME TO STREAMSCOUT</p>
+
+      <h2>
+        Discover Your<br>
+        <span>Next Adventure</span>
+      </h2>
+
+      <p class="description">
+        Explore amazing movies and web series from every universe.
+        Find your next favourite story in one place.
+      </p>
+
+      <button class="explore-btn">Explore Now</button>
+    </div>
+
+    <div class="watermark">
+      SPIDER<br>
+      <span>VERSE</span>
+    </div>
+  </section>
+
+  <!-- Trending Movies -->
+  <section class="section" id="movies">
+    <div class="heading">
+      <h2>Trending <span>Movies</span></h2>
+      <p>Popular movies you should watch</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="poster poster-one">01</div>
+        <h3>Into the Multiverse</h3>
+        <p>Action • Adventure</p>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-two">02</div>
+        <h3>Night City</h3>
+        <p>Thriller • Mystery</p>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-three">03</div>
+        <h3>Beyond Space</h3>
+        <p>Sci-Fi • Drama</p>
+      </div>
+
+      <div class="card">
+        <div class="poster poster-four">04</div>
+        <h3>Dark Horizon</h3>
+        <p>Action • Fantasy</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Series -->
+  <section class="section series-section" id="series">
+    <div class="heading">
+      <h2>Popular <span>Web Series</span></h2>
+      <p>Stories worth binge-watching</p>
+    </div>
+
+    <div class="series-box">
+      <h2>Your next binge starts here.</h2>
+      <p>
+        Find exciting web series, unforgettable characters,
+        and stories that keep you hooked.
+      </p>
+
+      <button class="explore-btn">Explore Series</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="about">
+    <h2>Stream<span>Scout</span></h2>
+    <p>Discover. Explore. Watch.</p>
+    <small>© 2026 StreamScout. All rights reserved.</small>
+  </footer>
+
+  <!-- Sign In Popup -->
+  <div class="popup-overlay" id="signinPopup">
+    <div class="signin-popup">
+      <button class="close-btn" onclick="closePopup()">×</button>
+
+      <h2>Welcome Back!</h2>
+      <p>Sign in to continue to StreamScout</p>
+
+      <form onsubmit="loginUser(event)">
+        <input type="email" placeholder="Enter your email" required>
+        <input type="password" placeholder="Enter your password" required>
+
+        <button type="submit" class="popup-signin">Sign In</button>
+      </form>
+
+      <p class="signup-text">
+        Don't have an account? <span>Sign Up</span>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("signinPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("signinPopup").style.display = "none";
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      alert("Sign in successful!");
+      closePopup();
+    }
+
+    window.onclick = function(event) {
+      const popup = document.getElementById("signinPopup");
+
+      if (event.target === popup) {
+        closePopup();
+      }
+    };
+  </script>
+
+</body>
+</html>

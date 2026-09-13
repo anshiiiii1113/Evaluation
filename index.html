@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMDb Clone — Movies, Top 10, Hindi & English Cinema</title>
+  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Gold Glow Backdrops -->
+  <div class="ambient-glow top-left"></div>
+  <div class="ambient-glow center-right"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#" class="logo-gold" title="IMDb Home">
+          <span class="logo-box">IMDb</span>
+          <span class="logo-subtitle">GOLD</span>
+        </a>
+        <button class="nav-btn menu-btn" id="menuBtn">
+          <i class="fa-solid fa-bars-staggered"></i>
+          <span>Explore</span>
+        </button>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="search-container">
+        <div class="search-category-wrap">
+          <select class="search-category" id="searchCategory">
+            <option value="all">All Titles</option>
+            <option value="hindi">Hindi</option>
+            <option value="english">English</option>
+          </select>
+          <i class="fa-solid fa-angle-down select-icon"></i>
+        </div>
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass search-leading-icon"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search Hindi, English movies, cast, directors..." 
+            autocomplete="off"
+          />
+          <button class="clear-search-btn" id="clearSearchBtn" title="Clear">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-switch-pills">
+          <button class="lang-btn active" data-filter="all">All</button>
+          <button class="lang-btn" data-filter="hindi">Hindi</button>
+          <button class="lang-btn" data-filter="english">English</button>
+        </div>
+        <button class="nav-btn watchlist-btn" id="openWatchlistBtn">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Watchlist</span>
+          <span class="watchlist-count-badge" id="navWatchlistCount">0</span>
+        </button>
+        <button class="signin-gold-btn">Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE ENTERTAINMENT & BOX OFFICE TICKER -->
+  <div class="ticker-wrapper">
+    <div class="ticker-container">
+      <div class="ticker-badge">
+        <span class="pulse-indicator"></span>
+        <i class="fa-solid fa-bolt"></i>
+        <span>IMDb LIVE</span>
+      </div>
+      <div class="ticker-track-wrap">
+        <div class="ticker-track" id="tickerTrack">
+          <!-- Populated dynamically with breaking news & box office -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Results Overlay (Active when user types in search) -->
+  <section class="search-results-section" id="searchResultsSection" style="display: none;">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="title-with-bar">
+          <span class="gold-bar"></span>
+          <h2>Search Results <span id="searchKeywordLabel" class="search-keyword"></span></h2>
+        </div>
+        <button class="close-search-results" id="closeSearchSectionBtn">
+          <i class="fa-solid fa-xmark"></i> Close Search
+        </button>
+      </div>
+      <div class="movies-grid" id="searchGrid"></div>
+      <div class="empty-state" id="noSearchResults" style="display: none;">
+        <i class="fa-solid fa-film"></i>
+        <h3>No matching movies found</h3>
+        <p>Try searching by actor, director, or different keywords like "Nolan", "Khan", or "Action".</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Showcase Container -->
+  <main class="main-container" id="mainShowcase">
+    
+    <!-- Hero Spotlight with Gold Accent Glassmorphism -->
+    <section class="hero-spotlight">
+      <div class="hero-backdrop" id="heroBackdrop"></div>
+      <div class="hero-gradient-overlay"></div>
+      
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="badge gold-badge"><i class="fa-solid fa-crown"></i> SPOTLIGHT OF THE WEEK</span>
+          <span class="badge lang-badge" id="heroLangBadge">ENGLISH</span>
+          <span class="badge hd-badge">4K ULTRA HD</span>
+        </div>
+        <h1 class="hero-title" id="heroTitle">Oppenheimer</h1>
+        
+        <div class="hero-meta">
+          <span class="hero-rating">
+            <i class="fa-solid fa-star"></i>
+            <strong id="heroRating">8.9</strong><span class="total-rating">/10</span>
+          </span>
+          <span class="dot">•</span>
+          <span id="heroYear">2023</span>
+          <span class="dot">•</span>
+          <span id="heroDuration">3h 00m</span>
+          <span class="dot">•</span>
+          <span id="heroGenre" class="hero-genre-text">Biography, Drama, History</span>
+        </div>
+
+        <p class="hero-desc" id="heroDesc">
+          The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-gold" id="heroTrailerBtn">
+            <i class="fa-solid fa-play"></i> Watch Trailer
+          </button>
+          <button class="btn btn-glass" id="heroDetailsBtn">
+            <i class="fa-solid fa-circle-info"></i> More Details
+          </button>
+          <button class="btn btn-icon-only" id="heroWatchlistBtn" title="Add to Watchlist">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Up Next Mini-Previews -->
+      <div class="hero-mini-selector" id="heroMiniSelector">
+        <span class="selector-title"><i class="fa-solid fa-fire"></i> Up Next</span>
+        <div class="mini-cards-wrapper" id="miniCardsWrapper"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Top 10 on IMDb (Numbered Luxury Cards) -->
+    <section class="movie-shelf-section top10-section">
+      <div class="shelf-header">
+        <div class="title-with-bar">
+          <span class="gold-bar"></span>
+          <div>
+            <span class="shelf-sub">WHAT USERS ARE WATCHING</span>
+            <h2>Top 10 on IMDb This Week</h2>
+          </div>
+        </div>
+        <div class="shelf-controls">
+          <button class="scroll-arrow prev" data-target="top10Shelf" title="Scroll Left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="scroll-arrow next" data-target="top10Shelf" title="Scroll Right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="shelf-scroll-row top10-row" id="top10Shelf">
+        <!-- Filled dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: Hindi Cinema & Indian Blockbusters -->
+    <section class="movie-shelf-section" id="hindiSection">
+      <div class="shelf-header">
+        <div class="title-with-bar">
+          <span class="gold-bar"></span>
+          <div>
+            <span class="shelf-sub">BOLLYWOOD & INDIAN CINEMA</span>
+            <h2>Top Rated Hindi & Indian Blockbusters</h2>
+          </div>
+        </div>
+        <div class="shelf-controls">
+          <button class="scroll-arrow prev" data-target="hindiShelf" title="Scroll Left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="scroll-arrow next" data-target="hindiShelf" title="Scroll Right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="shelf-scroll-row standard-row" id="hindiShelf">
+        <!-- Filled dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: English Blockbusters & Global Masterpieces -->
+    <section class="movie-shelf-section" id="englishSection">
+      <div class="shelf-header">
+        <div class="title-with-bar">
+          <span class="gold-bar"></span>
+          <div>
+            <span class="shelf-sub">HOLLYWOOD & GLOBAL MASTERPIECES</span>
+            <h2>Top Rated English & Hollywood Hits</h2>
+          </div>
+        </div>
+        <div class="shelf-controls">
+          <button class="scroll-arrow prev" data-target="englishShelf" title="Scroll Left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="scroll-arrow next" data-target="englishShelf" title="Scroll Right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="shelf-scroll-row standard-row" id="englishShelf">
+        <!-- Filled dynamically by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Watchlist Drawer (Slide-In Panel) -->
+  <div class="drawer-overlay" id="watchlistDrawer">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div class="title-with-bar">
+          <span class="gold-bar"></span>
+          <h3>Your Watchlist</h3>
+        </div>
+        <button class="drawer-close" id="closeWatchlistBtn">&times;</button>
+      </div>
+      <div class="drawer-content" id="watchlistContent">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Movie Details Modal -->
+  <div class="modal-overlay" id="movieModal">
+    <div class="modal-box">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Trailer Video Modal -->
+  <div class="modal-overlay" id="trailerModal">
+    <div class="modal-box trailer-box">
+      <button class="close-modal" id="closeTrailerModal">&times;</button>
+      <div class="trailer-wrapper" id="trailerWrapper">
+        <!-- YouTube iframe injected on click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-gold">
+          <span class="logo-box">IMDb</span>
+          <span class="logo-subtitle">GOLD</span>
+        </div>
+        <p>The world's most trusted authority on movie ratings, Hindi & English cinema, and entertainment trivia.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#">Top 10 Movies</a>
+          <a href="#">Hindi Movies</a>
+          <a href="#">English Blockbusters</a>
+          <a href="#">IMDb Top 250</a>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <a href="#">Watchlist</a>
+          <a href="#">User Ratings</a>
+          <a href="#">Critic Reviews</a>
+          <a href="#">Awards & Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & Business</h4>
+          <a href="#">IMDbPro</a>
+          <a href="#">Box Office Mojo</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 1990-2026 by IMDb.com, Inc. Custom Gold & Black Theme Edition.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

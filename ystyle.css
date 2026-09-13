@@ -1,0 +1,455 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080808;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+
+.navbar {
+  height: 75px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #080808;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.logo span,
+.gold-bar a:hover,
+.heading span,
+footer span {
+  color: #e5a23c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: #e5a23c;
+}
+
+.search-btn {
+  padding: 11px 23px;
+  border: none;
+  border-radius: 5px;
+  background: #e5a23c;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Gold Bar */
+
+.gold-bar {
+  height: 62px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #b87920, #e7a33d, #b87920);
+  box-shadow: 0 3px 15px rgba(229, 162, 60, 0.25);
+}
+
+.bar-options {
+  display: flex;
+  gap: 35px;
+}
+
+.gold-bar a {
+  color: #17100a;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.signin-btn {
+  padding: 11px 26px;
+  border: 2px solid #17100a;
+  border-radius: 5px;
+  background: transparent;
+  color: #17100a;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background: #17100a;
+  color: #e7a33d;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 650px;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.92),
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.15)
+    ),
+    url("images/spiderman-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  max-width: 570px;
+  position: relative;
+  z-index: 2;
+}
+
+.tag {
+  color: #e5a23c;
+  letter-spacing: 4px;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.hero h2 {
+  font-size: 60px;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.hero h2 span {
+  color: #e5a23c;
+}
+
+.description {
+  color: #dddddd;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 490px;
+}
+
+.explore-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background: #e5a23c;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.watermark {
+  position: absolute;
+  right: 6%;
+  bottom: 40px;
+  font-size: 75px;
+  font-weight: bold;
+  line-height: 0.9;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.13);
+  transform: rotate(-8deg);
+}
+
+.watermark span {
+  color: rgba(220, 40, 45, 0.3);
+}
+
+/* Sections */
+
+.section {
+  padding: 70px 8%;
+  background: #0d0d0d;
+}
+
+.heading {
+  margin-bottom: 35px;
+}
+
+.heading h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.heading p {
+  color: #999;
+}
+
+/* Movie Cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: #181818;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(229, 162, 60, 0.15);
+}
+
+.poster {
+  height: 250px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.poster-one {
+  background: linear-gradient(140deg, #9d1725, #210507);
+}
+
+.poster-two {
+  background: linear-gradient(140deg, #203c91, #050817);
+}
+
+.poster-three {
+  background: linear-gradient(140deg, #9b7025, #201504);
+}
+
+.poster-four {
+  background: linear-gradient(140deg, #57217d, #100516);
+}
+
+.card h3 {
+  padding: 17px 18px 8px;
+}
+
+.card p {
+  padding: 0 18px 20px;
+  color: #999;
+}
+
+/* Series */
+
+.series-section {
+  background: #101010;
+}
+
+.series-box {
+  padding: 55px;
+  border-radius: 12px;
+  background: linear-gradient(
+    100deg,
+    rgba(100, 10, 20, 0.8),
+    rgba(10, 20, 70, 0.8)
+  );
+}
+
+.series-box h2 {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.series-box p {
+  color: #ddd;
+  max-width: 550px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding: 45px;
+  background: #050505;
+}
+
+footer h2 {
+  margin-bottom: 10px;
+}
+
+footer p {
+  color: #999;
+  margin-bottom: 20px;
+}
+
+footer small {
+  color: #777;
+}
+
+/* Sign In Popup */
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.signin-popup {
+  width: 370px;
+  padding: 35px;
+  border-radius: 12px;
+  background: #171717;
+  border: 1px solid #e5a23c;
+  box-shadow: 0 0 35px rgba(229, 162, 60, 0.25);
+  position: relative;
+  text-align: center;
+}
+
+.signin-popup h2 {
+  color: #e5a23c;
+  margin-bottom: 10px;
+}
+
+.signin-popup > p {
+  color: #aaa;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.signin-popup input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #0d0d0d;
+  color: white;
+  outline: none;
+}
+
+.signin-popup input:focus {
+  border-color: #e5a23c;
+}
+
+.popup-signin {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 5px;
+  background: #e5a23c;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.signup-text span {
+  color: #e5a23c;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 12px;
+  }
+
+  .bar-options {
+    gap: 15px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h2 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .gold-bar {
+    padding: 0 20px;
+  }
+
+  .bar-options {
+    gap: 10px;
+  }
+
+  .gold-bar a {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 60px 25px;
+  }
+
+  .hero h2 {
+    font-size: 38px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 55px 25px;
+  }
+
+  .series-box {
+    padding: 30px;
+  }
+
+  .signin-popup {
+    width: 90%;
+  }
+}
