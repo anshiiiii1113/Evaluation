@@ -635,3 +635,68 @@ footer small {
     width: 100px;
   }
 }
+/* TMDB Loading & Empty States */
+.api-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px 20px;
+  color: #e5a23c;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.api-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.api-empty i {
+  font-size: 40px;
+  color: #e5a23c;
+  margin-bottom: 15px;
+}
+
+.api-empty h3 {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* Card Poster Overlays for TMDB */
+.card-badge {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #e5a23c;
+  color: #e5a23c;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.poster-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card-body {
+  padding: 14px 16px;
+}
+
+.card-body h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-body p {
+  color: #999;
+  font-size: 12px;
+}
+
+.card-body p i {
+  color: #e5a23c;
+}
