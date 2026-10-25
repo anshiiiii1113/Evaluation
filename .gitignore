@@ -1,14 +1,5 @@
-# Dependencies
-node_modules/
-
 # Production build output
 dist/
-
-# Local environment and secrets
-.env
-.env.*
-!.env.example
-*.local
 
 # OS/editor artifacts
 .DS_Store
