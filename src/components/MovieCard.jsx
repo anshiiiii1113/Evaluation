@@ -33,7 +33,7 @@ const MovieCard = ({ movie, index = 0 }) => {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && handleClick()}
-      className="group relative flex-shrink-0 w-[42vw] xs:w-[38vw] sm:w-[220px] md:w-[200px] lg:w-[180px] xl:w-[190px] cursor-pointer select-none transition-all duration-300 hover:-translate-y-2 focus:outline-none snap-start"
+      className="group relative flex-shrink-0 w-[42vw] xs:w-[38vw] sm:w-[220px] md:w-[200px] lg:w-[180px] xl:w-[190px] cursor-pointer select-none transition-all duration-300 hover:-translate-y-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black snap-start"
       style={{ animationDelay: `${index * 40}ms` }}
     >
       {/* Poster Container */}
@@ -97,3 +97,4 @@ const MovieCard = ({ movie, index = 0 }) => {
 };
 
 export default MovieCard;
+
